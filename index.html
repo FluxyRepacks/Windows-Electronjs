@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxy Repacks - v0.1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>🎮 Fluxy Repacks</h1>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-view="games">
+                    <span class="icon">🎮</span>
+                    <span>Games</span>
+                </li>
+                <li class="menu-item" data-view="patchnotes">
+                    <span class="icon">📝</span>
+                    <span>PatchNotes</span>
+                </li>
+                <li class="menu-item" data-view="about">
+                    <span class="icon">ℹ️</span>
+                    <span>About</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Games View -->
+            <div id="games-view" class="view active">
+                <div class="view-header">
+                    <h2>Liste of Games <span id="games-count" class="games-count">(0)</span></h2>
+                    <button id="refresh-btn" class="btn-primary">
+                        <span class="icon">🔄</span> Refresh
+                    </button>
+                </div>
+                
+                <!-- Search and Filters -->
+                <div class="search-filter-bar">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-input" placeholder="search a game..." />
+                        <button id="clear-search" class="clear-btn" style="display: none;">✕</button>
+                    </div>
+                    
+                    <div class="filters">
+                        <select id="genre-filter" class="filter-select">
+                            <option value="">All of genres</option>
+                        </select>
+                        
+                        <select id="sort-filter" class="filter-select">
+                            <option value="recent">Most recents</option>
+                            <option value="views">Most views</option>
+                            <option value="downloads">Most downloads</option>
+                            <option value="name">Name (A-Z)</option>
+                            <option value="size">Size</option>
+                        </select>
+                        
+                        <button id="toggle-view" class="btn-icon" title="Changer la vue">
+                            <span id="view-icon">▦</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="loading" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Loading games...</p>
+                </div>
+                <div id="error-message" class="error-message" style="display: none;"></div>
+                
+                <div id="no-results" class="no-results" style="display: none;">
+                    <span class="no-results-icon">🔍</span>
+                    <p>None games found</p>
+                    <button id="reset-filters" class="btn-primary">Reset filters</button>
+                </div>
+                
+                <div id="games-grid" class="games-grid"></div>
+            </div>
+
+            <!-- Patch Notes View -->
+            <div id="patchnotes-view" class="view">
+                <div class="view-header">
+                    <h2>Notes de mise à jour</h2>
+                </div>
+                <div class="content-section">
+                    <div class="patch-note-card">
+                        <div class="patch-header">
+                            <h3>Version 1.0.0</h3>
+                            <span class="date">14 Novembre 2025</span>
+                        </div>
+                        <ul class="patch-list">
+                            <li>Première version de l'application Electron</li>
+                            <li>Liste complète des jeux disponibles sur Fluxy Repacks</li>
+                            <li>Affichage détaillé des informations de chaque jeu</li>
+                            <li>Support des liens de téléchargement directs</li>
+                            <li>Support des fichiers torrents avec magnet links</li>
+                            <li>Interface moderne et responsive</li>
+                            <li>Actualisation automatique des données</li>
+                            <li>Affichage des screenshots en galerie</li>
+                            <li>Statistiques de vues et téléchargements</li>
+                            <li>Compatible Windows, macOS et Linux</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About View -->
+            <div id="about-view" class="view">
+                <div class="view-header">
+                    <h2>À propos</h2>
+                </div>
+                <div class="content-section about-content">
+                    <div class="about-icon">🎮</div>
+                    <h1>Fluxy Repacks</h1>
+                    <p class="version">Version 1.0.0</p>
+                    
+                    <div class="about-section">
+                        <h3>Description</h3>
+                        <p>Application Electron pour parcourir et télécharger les jeux disponibles sur Fluxy Repacks. Accédez facilement à une large sélection de jeux avec des informations détaillées, des screenshots et des liens de téléchargement.</p>
+                    </div>
+
+                    <div class="about-section">
+                        <h3>Fonctionnalités</h3>
+                        <ul class="features-list">
+                            <li>📋 Liste complète des jeux avec recherche</li>
+                            <li>ℹ️ Détails complets et screenshots</li>
+                            <li>⬇️ Liens de téléchargement directs</li>
+                            <li>🌪️ Support des torrents (magnet links)</li>
+                            <li>🔄 Actualisation en temps réel</li>
+                            <li>💻 Compatible toutes plateformes</li>
+                        </ul>
+                    </div>
+
+                    <button id="visit-website" class="btn-primary btn-large">
+                        🌐 Visiter le site web
+                    </button>
+                </div>
+            </div>
+
+            <!-- Game Detail Modal -->
+            <div id="game-detail-modal" class="modal">
+                <div class="modal-content">
+                    <button class="modal-close">&times;</button>
+                    <div id="game-detail-content"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
