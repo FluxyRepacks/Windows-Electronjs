@@ -1,18 +1,28 @@
 {
-  "name": "Fluxyrepacks-For-Windows",
-  "productName": "fluxyWIN",
-  "description": "From Fluxyrepacks",
+  "name": "fluxyrepacks",
+  "productName": "Fluxy",
+  "description": "Desktop app for Fluxyrepacks website",
   "keywords": [],
   "main": "./main.js",
-  "version": "1.0.0",
-  "author": "Arizaki",
+  "version": "0.1.1",
+  "author": "Arizaki <placeholder@exemple.com>",
   "scripts": {
-    "start": "electron ."
-  },
-  "dependencies": {
-    "electron-builder": "26.1.0"
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win portable --x64 --ia32 --arm64",
+    "build:mac": "electron-builder --mac --x64 --arm64",
+    "build:linux": "electron-builder --linux AppImage deb --x64 --arm64"
   },
   "devDependencies": {
-    "electron": "28.0.0"
-  }
+    "dmg-license": "^1.0.11",
+    "electron": "39.2.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "linux": {
+      "category": "Game"
+    }
+  },
+  "packageManager": "pnpm@10.22.0+sha512.bf049efe995b28f527fd2b41ae0474ce29186f7edcb3bf545087bd61fbbebb2bf75362d1307fda09c2d288e1e499787ac12d4fcb617a974718a6051f2eee741c"
 }
