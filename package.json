@@ -4,15 +4,15 @@
   "description": "Desktop app for Fluxyrepacks website",
   "keywords": [],
   "main": "./main.js",
-  "version": "0.1.1",
-  "author": "Arizaki <placeholder@exemple.com>",
+  "version": "0.2.1",
+  "author": "Arizaki",
   "scripts": {
     "start": "electron .",
     "postinstall": "electron-builder install-app-deps",
     "build": "electron-builder",
-    "build:win": "electron-builder --win portable --x64 --ia32 --arm64",
-    "build:mac": "electron-builder --mac --x64 --arm64",
-    "build:linux": "electron-builder --linux AppImage deb --x64 --arm64"
+    "build:win": "electron-builder --win portable --x64 --ia32 --arm64 --publish never",
+    "build:mac": "electron-builder --mac --x64 --arm64 --publish never",
+    "build:linux": "electron-builder --linux AppImage deb --x64 --arm64 --publish never"
   },
   "devDependencies": {
     "dmg-license": "^1.0.11",
